@@ -7,18 +7,145 @@ import {
 } from "./utils";
 
 class GradesTable extends Component {
+  constructor(props) {
+    super(props);
+    this.studentsData = genStudentData();
+    this.average = avgGradesFromStudentsData(this.studentsData);
+  }
   render() {
-    const studentsData = genStudentData();
-    const average = avgGradesFromStudentsData(studentsData);
     return (
       <div>
         <table>
           <HeaderRow />
-          <StudentRows studentsData={studentsData} />
-          <AverageRow average={average} />
+          <ClickCountButtonOnClickBind init_clicks={5} />
+          <ClickCountConstructorBind init_clicks={5} />
+          <ClickCountButtonArrowFunction init_clicks={5} />
+          <ClickCountClickArrowFunction init_clicks={5} />
+          <ClickCountAccountForReactRepeatProtection init_clicks={5} />
+          <StudentRows studentsData={this.studentsData} />
+          <AverageRow average={this.average} />
         </table>
       </div>
     );
+  }
+}
+
+class ClickCountButtonOnClickBind extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { num_clicks: props.init_clicks };
+  }
+  render() {
+    return (
+      <tr>
+        <td>
+          <button type="submit" onClick={this.addClick.bind(this)}>
+            Click me (button on click bind)
+          </button>
+        </td>
+        <td>num reloads: {this.state.num_clicks}</td>
+      </tr>
+    );
+  }
+  addClick() {
+    this.setState({ num_clicks: this.state.num_clicks + 1 });
+  }
+}
+
+class ClickCountConstructorBind extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { num_clicks: props.init_clicks };
+    this.addClick = this.addClick.bind(this);
+  }
+  render() {
+    return (
+      <tr>
+        <td>
+          <button type="submit" onClick={this.addClick}>
+            Click me (constructor bind)
+          </button>
+        </td>
+        <td>num reloads: {this.state.num_clicks}</td>
+      </tr>
+    );
+  }
+  addClick() {
+    this.setState({ num_clicks: this.state.num_clicks + 1 });
+  }
+}
+
+class ClickCountButtonArrowFunction extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { num_clicks: props.init_clicks };
+  }
+  render() {
+    return (
+      <tr>
+        <td>
+          <button type="submit" onClick={() => this.addClick()}>
+            Click me (button arrow function)
+          </button>
+        </td>
+        <td>num reloads: {this.state.num_clicks}</td>
+      </tr>
+    );
+  }
+  addClick() {
+    this.setState({ num_clicks: this.state.num_clicks + 1 });
+  }
+}
+
+class ClickCountClickArrowFunction extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { num_clicks: props.init_clicks };
+  }
+  render() {
+    return (
+      <tr>
+        <td>
+          <button type="submit" onClick={this.addClick}>
+            Click me (click arrow function)
+          </button>
+        </td>
+        <td>num reloads: {this.state.num_clicks}</td>
+      </tr>
+    );
+  }
+  addClick = () => {
+    this.setState({ num_clicks: this.state.num_clicks + 1 });
+  };
+}
+
+class ClickCountAccountForReactRepeatProtection extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { num_clicks: props.init_clicks };
+    this.addClickX5 = this.addClickX5.bind(this);
+  }
+  render() {
+    return (
+      <tr>
+        <td>
+          <button type="submit" onClick={this.addClickX5}>
+            Click x 5 (account for react counter repeat protection)
+          </button>
+        </td>
+        <td>num reloads: {this.state.num_clicks}</td>
+      </tr>
+    );
+  }
+  addClick() {
+    this.setState((prevState) => ({ num_clicks: prevState.num_clicks + 1 }));
+  }
+  addClickX5() {
+    this.addClick();
+    this.addClick();
+    this.addClick();
+    this.addClick();
+    this.addClick();
   }
 }
 
