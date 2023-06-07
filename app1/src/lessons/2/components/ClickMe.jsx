@@ -182,6 +182,7 @@ class ClickCountNoAccountForReactRepeatProtection extends Component {
     this.addClick();
   }
 }
+
 class ClickCountAccountForReactRepeatProtection extends Component {
   constructor(props) {
     super(props);

@@ -3,6 +3,7 @@ import { Component } from "react";
 import "./App.css";
 import GradesTable from "./lessons/1/components/GradesTable.jsx";
 import ClickMe from "./lessons/2/components/ClickMe.jsx";
+import Temp from "./lessons/3/components/Temp.jsx";
 
 class App extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class App extends Component {
   }
   setLesson1 = () => this.setState({ main_component: <GradesTable /> });
   setLesson2 = () => this.setState({ main_component: <ClickMe /> });
+  setLesson3 = () => this.setState({ main_component: <Temp /> });
   render() {
     return (
       <div className="App">
@@ -22,8 +24,11 @@ class App extends Component {
           <button type="submit" onClick={this.setLesson2}>
             Lesson 2: Click Me
           </button>
+          <button type="submit" onClick={this.setLesson3}>
+            Lesson 3: Temp
+          </button>
         </nav>
-        <main autoFocus="true" role="main">
+        <main autoFocus={true} role="main">
           {this.state.main_component}
         </main>
       </div>
