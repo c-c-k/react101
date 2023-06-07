@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { genRandomHexColorCode } from "./utils";
 
 class ClickMe extends Component {
   constructor(props) {
@@ -9,12 +10,13 @@ class ClickMe extends Component {
       <>
         <table>
           <HeaderRow />
-          <ClickCountButtonOnClickBind init_clicks={5} />
+          <ClickCountButtonBind init_clicks={5} />
           <ClickCountConstructorBind init_clicks={5} />
           <ClickCountButtonArrowFunction init_clicks={5} />
-          <ClickCountClickArrowFunction init_clicks={5} />
+          <ClickCountClassArrowFunction init_clicks={5} />
           <ClickCountNoAccountForReactRepeatProtection init_clicks={5} />
           <ClickCountAccountForReactRepeatProtection init_clicks={5} />
+          <ColorChangerCell fgColor="#000000" bgColor="#ffffff" />
         </table>
       </>
     );
@@ -33,7 +35,7 @@ class HeaderRow extends Component {
   }
 }
 
-class ClickCountButtonOnClickBind extends Component {
+class ClickCountButtonBind extends Component {
   constructor(props) {
     super(props);
     this.state = { num_clicks: props.init_clicks };
@@ -76,7 +78,6 @@ class ClickCountConstructorBind extends Component {
           </button>
         </td>
         <td>clicks [{this.state.num_clicks}]</td>
-
         <td align="left">
           <em>
             (getting <code>this</code> to work inside <code>onClick</code>:
@@ -120,7 +121,7 @@ class ClickCountButtonArrowFunction extends Component {
   }
 }
 
-class ClickCountClickArrowFunction extends Component {
+class ClickCountClassArrowFunction extends Component {
   constructor(props) {
     super(props);
     this.state = { num_clicks: props.init_clicks };
@@ -211,6 +212,64 @@ class ClickCountAccountForReactRepeatProtection extends Component {
   addClickX2() {
     this.addClick();
     this.addClick();
+  }
+}
+
+class ColorChangerCell extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { coloredWords: this.genRandomColoredWords() };
+    this.setRandomColoredWords = this.setRandomColoredWords.bind(this);
+  }
+  render() {
+    return (
+      <tr>
+        <td>
+          <button type="submit" onClick={this.setRandomColoredWords}>
+            Click me
+          </button>
+        </td>
+        <td>{this.state.coloredWords}</td>
+        <td align="left">
+          <em>(homework: color changing button)</em>
+        </td>
+      </tr>
+    );
+  }
+  setRandomColoredWords() {
+    this.setState({ coloredWords: this.genRandomColoredWords() });
+  }
+  genRandomColoredWords() {
+    const words = ["The ", "colour ", "of ", "magic"];
+    let _coloredWords = [];
+    let fgColor;
+    let bgColor;
+    for (let word of words) {
+      fgColor = genRandomHexColorCode();
+      bgColor = genRandomHexColorCode();
+      _coloredWords.push(
+        <RandomColorWord word={word} fgColor={fgColor} bgColor={bgColor} />
+      );
+    }
+    return _coloredWords;
+  }
+}
+
+class RandomColorWord extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <span
+        style={{
+          color: this.props.fgColor,
+          backgroundColor: this.props.bgColor,
+        }}
+      >
+        {this.props.word}
+      </span>
+    );
   }
 }
 

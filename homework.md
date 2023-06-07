@@ -8,4 +8,4 @@ Wed 31 May 2023 21:21:03 IDT
         - demo dataset
 
 Sun 04 Jun 2023 21:07:10 IDT
-    - do a button that changes collor on each click
+    - do a button that changes color on each click
