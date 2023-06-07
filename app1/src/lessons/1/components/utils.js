@@ -1,5 +1,5 @@
 export function genStudentData () {
-    const numStudents = 20 + Math.round(Math.random() * 10);
+    const numStudents = 15 + Math.round(Math.random() * 10);
     let studentsData = [];
     for ( let studentNum = 1; studentNum <= numStudents; studentNum++ ) {
         let grade =  30 + Math.round(Math.random() * 70);
