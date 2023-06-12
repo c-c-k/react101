@@ -5,13 +5,15 @@ import GradesTable from "./lessons/1/components/GradesTable.jsx";
 import ClickMe from "./lessons/2/components/ClickMe.jsx";
 import KeyChange from "./lessons/3/components/KeyChange.jsx";
 import TableWithForm from "./lessons/4/components/TableWithForm.jsx";
+import Temp from "./lessons/5/components/Temp.jsx";
 
 export default function Home() {
-  const [lesson, setLesson] = useState(<TableWithForm />);
+  const [lesson, setLesson] = useState(<Temp />);
   const setLesson1 = () => setLesson(<GradesTable />);
   const setLesson2 = () => setLesson(<ClickMe />);
   const setLesson3 = () => setLesson(<KeyChange />);
   const setLesson4 = () => setLesson(<TableWithForm />);
+  const setLesson5 = () => setLesson(<Temp />);
   return (
     <div className="App">
       <nav>
@@ -27,6 +29,9 @@ export default function Home() {
         </button>
         <button type="submit" onClick={setLesson4}>
           <p>Lesson 4:</p> <p>Table With Form</p>
+        </button>
+        <button type="submit" onClick={setLesson5}>
+          <p>Lesson 5:</p> <p>Temp</p>
         </button>
       </nav>
       <main autoFocus={true} role="main">
