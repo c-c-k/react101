@@ -4,3 +4,4 @@ mypy
 pylint
 fastapi[all]
 requests
+sqlfluff
