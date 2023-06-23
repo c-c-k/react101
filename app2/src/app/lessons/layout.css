@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+  height: 97vh;
+    margin: 0.5% 0.5%  0.5%  0.5%;
+  width: 98vw;
+    border: 0.1em dashed;
+}
+
+nav {
+    width: 8%;
+    height: 98%;
+    margin: 0.2% 0.2%  0.2%  0.2%;
+    float: left;
+    border: 0.1em double;
+    overflow: auto;
+}
+
+nav button {
+    width: 98%;
+    margin: 0.2% 0.2%  0.2%  0.2%;
+}
+
+nav button p {
+    width: 98%;
+    margin: 0.1% 0.1%  0.1%  0.1%;
+}
+
+main {
+    width: 90%;
+    height: 98%;
+    margin: 0.2% 0.2%  0.2%  0.2%;
+    float: left;
+    border: 0.1em dotted;
+    overflow: auto;
+}
+
+.App::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
