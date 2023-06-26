@@ -9,6 +9,7 @@ export default function Lessons({ children }) {
     { lessonNum: "4", lessonNickName: "Table With Form" },
     { lessonNum: "5", lessonNickName: "!TODO: MAYBE!" },
     { lessonNum: "6", lessonNickName: "HotelsInfo" },
+    { lessonNum: "7", lessonNickName: "Thumbnails" },
   ];
 
   const lessonsCompList = lessonsObjList.map(

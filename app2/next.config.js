@@ -9,7 +9,7 @@ const nextConfig = {
             },
             {
                 source: "/lessons",
-                destination: "/lessons/6",
+                destination: "/lessons/7",
                 permanent: false,
             },
         ]

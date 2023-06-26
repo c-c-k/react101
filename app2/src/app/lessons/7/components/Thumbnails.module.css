@@ -1,0 +1,17 @@
+.imageContainerBase {
+    position: relative;
+    top: 30px;
+    left: 20px;
+}
+
+.imageContainerNormal {
+    width: 100px;
+    height: 100px;
+    background: grey;
+}
+
+.imageContainerHovered {
+    width: 300;
+    height: 300;
+    background: pink;
+}
