@@ -1,6 +1,6 @@
 "use client";
-import NewLesson from "./components/NewLesson.jsx";
+import ThumbnailsGrid from "./components/ThumbnailsGrid.jsx";
 
 export default function page() {
-    return <NewLesson />
+    return <ThumbnailsGrid />
 }
